@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-menu-superior',
@@ -6,6 +7,4 @@ import { Component } from '@angular/core';
   templateUrl: './menu-superior.html',
   styleUrl: './menu-superior.css'
 })
-export class MenuSuperior {
-
-}
+export class MenuSuperior {}

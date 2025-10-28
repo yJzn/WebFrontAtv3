@@ -24,6 +24,7 @@ const routes: Routes = [
   },
   { path: 'noticia-detalhe/:id', component: NoticiaDetalhe },
   { path: 'calcular-media', component: CalcularMedia },
+  { path: 'viagem', component: Viagem },
   { path: '**', component: PaginaNaoEncontrada }
 ];
 

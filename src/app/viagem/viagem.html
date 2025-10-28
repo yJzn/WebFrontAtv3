@@ -1,1 +1,57 @@
-<p>viagem works!</p>
+<form [formGroup]="viagemForm" (ngSubmit)="submit()">
+
+    <div class="mb-3">
+        <label class="form-label">Destino:</label>
+        <select class="form-select" formControlName="destino"
+            [ngClass]="{'input-invalido': viagemForm.get('destino')?.touched && viagemForm.get('destino')?.invalid}">
+            <option value="">Selecione...</option>
+            <option *ngFor="let d of destinos" [value]="d">{{ d }}</option>
+        </select>
+        <div *ngIf="viagemForm.get('destino')?.touched && viagemForm.get('destino')?.invalid" class="text-danger">
+            <small>Selecione um destino.</small>
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <label for="dataIda" class="form-label">Data de Ida:</label>
+        <input id="dataIda" type="date" class="form-control" formControlName="dataIda"
+            [ngClass]="{'input-invalido': viagemForm.get('dataIda')?.touched && viagemForm.get('dataIda')?.invalid}" />
+        <div *ngIf="viagemForm.get('dataIda')?.touched && viagemForm.get('dataIda')?.invalid" class="text-danger">
+            <small>Data de ida é obrigatória.</small>
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <label for="dataVolta" class="form-label">Data de Volta:</label>
+        <input id="dataVolta" type="date" class="form-control" formControlName="dataVolta"
+            [ngClass]="{'input-invalido': viagemForm.get('dataVolta')?.touched && viagemForm.get('dataVolta')?.invalid}" />
+        <div *ngIf="viagemForm.get('dataVolta')?.touched && viagemForm.get('dataVolta')?.invalid" class="text-danger">
+            <small>Data de volta é obrigatória.</small>
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <label for="passageiros" class="form-label">Passageiros:</label>
+        <input id="passageiros" type="number" class="form-control" formControlName="passageiros"
+            [ngClass]="{'input-invalido': viagemForm.get('passageiros')?.touched && viagemForm.get('passageiros')?.invalid}" />
+        <div *ngIf="viagemForm.get('passageiros')?.touched && viagemForm.get('passageiros')?.invalid"
+            class="text-danger">
+            <small>Número de passageiros deve ser entre 1 e 5.</small>
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <label for="email" class="form-label">Email:</label>
+        <input id="email" type="email" class="form-control" formControlName="email"
+            [ngClass]="{'input-invalido': viagemForm.get('email')?.touched && viagemForm.get('email')?.invalid}" />
+        <div *ngIf="viagemForm.get('email')?.touched && viagemForm.get('email')?.invalid" class="text-danger">
+            <small *ngIf="viagemForm.get('email')?.errors?.['required']">Email é obrigatório.</small>
+            <small *ngIf="viagemForm.get('email')?.errors?.['email']">Email inválido.</small>
+        </div>
+    </div>
+
+    <button class="btn btn-primary" type="submit" [disabled]="viagemForm.invalid">
+        Enviar
+    </button>
+
+</form>
